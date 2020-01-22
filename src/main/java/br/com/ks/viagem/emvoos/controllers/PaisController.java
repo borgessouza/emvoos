@@ -1,7 +1,7 @@
 package br.com.ks.viagem.emvoos.controllers;
 
-import br.com.ks.viagem.emvoos.DTOs.PaisDTO;
-import br.com.ks.viagem.emvoos.modelos.Pais;
+import br.com.ks.viagem.emvoos.DTOs.request.PaisRequest;
+import br.com.ks.viagem.emvoos.DTOs.response.PaisResponse;
 import br.com.ks.viagem.emvoos.repositories.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -33,16 +33,16 @@ public class PaisController {
     @PostMapping(value = "/salvar",
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public PaisDTO salvarPais(@Valid @RequestBody PaisDTO salvarPaisDTO) {
-        return new PaisDTO(paisRepository.save(new Pais(salvarPaisDTO)));
+    public PaisResponse salvarPais(@Valid @RequestBody PaisRequest salvarPaisRequest) {
+        return new PaisResponse(paisRepository.save(salvarPaisRequest.convertToEntity()));
     }
 
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<PaisDTO> pegarTodosPaises() {
+    public List<PaisResponse> pegarTodosPaises() {
         return paisRepository.findAll()
                 .stream()
-                .map(PaisDTO::new)
+                .map(PaisResponse::new)
                 .collect(Collectors.toList());
 
     }
