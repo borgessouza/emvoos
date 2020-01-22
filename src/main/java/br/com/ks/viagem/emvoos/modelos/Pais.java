@@ -1,11 +1,12 @@
 package br.com.ks.viagem.emvoos.modelos;
 
+import br.com.ks.viagem.emvoos.DTOs.PaisDTO;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -16,14 +17,12 @@ public class Pais {
     @GeneratedValue(strategy = AUTO)
     private Long id;
 
-    @NotBlank(message = "Nome não pode ser nulo")
+    @NotBlank
     private String nome;
 
-    @NotBlank(message = "Capital não pode ser nulo")
-    @Size(max = 255, message = "Tamanho não permitido")
     private String capital;
 
-    private Long QqtdPopulacao;
+    private Long QtdPopulacao;
 
     private Pais() {
     }
@@ -31,38 +30,30 @@ public class Pais {
     public Pais(String nome, String capital, Long qutPopulacao) {
         this.nome = nome;
         this.capital = capital;
-        this.QqtdPopulacao = qutPopulacao;
+        this.QtdPopulacao = qutPopulacao;
+    }
+
+    public Pais(PaisDTO paisDTO) {
+        this.nome = paisDTO.getNome();
+        this.capital = paisDTO.getCapital();
+        this.QtdPopulacao = paisDTO.getQtdPopulacao();
+
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getCapital() {
         return capital;
     }
 
-    public void setCapital(String capital) {
-        this.capital = capital;
+    public Long getQtdPopulacao() {
+        return QtdPopulacao;
     }
 
-    public Long getQqtdPopulacao() {
-        return QqtdPopulacao;
-    }
-
-    public void setQqtdPopulacao(Long qqtdPopulacao) {
-        QqtdPopulacao = qqtdPopulacao;
-    }
 }

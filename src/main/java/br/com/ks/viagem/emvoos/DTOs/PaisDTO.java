@@ -2,11 +2,11 @@ package br.com.ks.viagem.emvoos.DTOs;
 
 import br.com.ks.viagem.emvoos.modelos.Pais;
 
+import javax.validation.constraints.NotBlank;
+
 public class PaisDTO {
 
-
-    @
-    private Long idPais;
+    @NotBlank(message = "Nome não pode ser vazio")
     private String nome;
     private String capital;
     private Long qtdPopulacao;
@@ -15,16 +15,10 @@ public class PaisDTO {
     }
 
     public PaisDTO(Pais pais) {
-        this.idPais = pais.getId();
         this.nome = pais.getNome();
         this.capital = pais.getCapital();
-        this.qtdPopulacao = pais.getQqtdPopulacao();
+        this.qtdPopulacao = pais.getQtdPopulacao();
     }
-
-    public Long getIdPais() {
-        return idPais;
-    }
-
     public String getNome() {
         return nome;
     }
