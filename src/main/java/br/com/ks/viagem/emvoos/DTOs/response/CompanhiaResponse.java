@@ -4,7 +4,6 @@ import br.com.ks.viagem.emvoos.modelos.Companhia;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class CompanhiaResponse {
 
@@ -23,23 +22,12 @@ public class CompanhiaResponse {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public PaisResponse getPais() {
         return pais;
-    }
-
-    public void setPais(PaisResponse pais) {
-        this.pais = pais;
     }
 
     public LocalDate getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(LocalDate dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
-}
+ }

@@ -57,8 +57,4 @@ public class Companhia {
     public LocalDate getDataCriacao() {
         return dataCriacao;
     }
-
-    public void setDataCriacao(LocalDate dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
 }
